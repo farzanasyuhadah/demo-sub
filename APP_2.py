@@ -11,9 +11,10 @@ from datetime import datetime
 # LOAD DONUT MODEL & PROCESSOR
 @st.cache_resource
 def donut_model():
-    model_path = "C:/Users/User/Desktop/CORD/MODELCORDv2/ModelDonutCORDv2"
-    processor = DonutProcessor.from_pretrained(model_path)
-    model = VisionEncoderDecoderModel.from_pretrained(model_path)
+    with st.spinner("Processing... Please wait!"):
+        model_path = "C:/Users/User/Desktop/CORD/MODELCORDv2/ModelDonutCORDv2"
+        processor = DonutProcessor.from_pretrained(model_path)
+        model = VisionEncoderDecoderModel.from_pretrained(model_path)
     return processor, model
 
 # FUNCTION PARSE RAW OUTPUT
@@ -195,7 +196,7 @@ def save_to_json(data):
 #----------------------------------------------------------------------------------------------------------------------
 
 # STREAMLIT APP
-st.markdown("<h1 style='text-align: center; color: #CD5C5C;'>SUB-AIRIS PROJECT</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #CD5C5C;'>AIRIS PROJECT</h1>", unsafe_allow_html=True)
 
 # Upload the receipt image
 uploaded_file = st.file_uploader("Upload a receipt image", type=["jpg", "png", "jpeg"])
@@ -210,8 +211,10 @@ if uploaded_file:
     # Display the uploaded image
     st.image(image, caption="Uploaded Receipt", use_column_width=True)
 
-    # Extract data from the image
-    extracted_data = extract_data_from_receipt(image, processor, model)
+    # Add spinner and processing message here
+    with st.spinner("Processing the model loading and data extraction.... Please Wait!"):
+        # Extract data from the image
+        extracted_data = extract_data_from_receipt(image, processor, model)
 
     # Check if extracted_data is valid
     if extracted_data:
