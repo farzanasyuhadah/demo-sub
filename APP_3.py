@@ -14,7 +14,7 @@ from datetime import datetime
 def donut_model():
     with st.spinner("Loading Donut model and processor..."):
         model_path = "Faz1306/donut-cord-SavedModelv2"
-        processor = DonutProcessor.from_pretrained(model_path, trust_remote_code=True)
+        processor = DonutProcessor.from_pretrained(model_path, trust_remote_code=True, use_fast=True)
         model = VisionEncoderDecoderModel.from_pretrained(model_path)
     return processor, model
 
@@ -141,7 +141,7 @@ uploaded_file = st.file_uploader("Upload a receipt image", type=["jpg", "png", "
 if uploaded_file:
     processor, model = donut_model()
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Receipt", use_column_width=True)
+    st.image(image, caption="Uploaded Receipt", use_container_width=True)
 
     with st.spinner("Processing the model and data extraction.... Please Wait!"):
         extracted_data = extract_data_from_receipt(image, processor, model)
