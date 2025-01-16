@@ -1,3 +1,4 @@
+pip==24.3.1
 streamlit==1.36.0
 pandas==2.2.2
 numpy==1.26.4
@@ -7,4 +8,6 @@ openpyxl==3.0.10
 torch==2.4.0
 transformers==4.31.0
 tokenizers==0.13.3
-Pillow==8.0.0
+Pillow==9.0.0
+libjpeg
+zlib
