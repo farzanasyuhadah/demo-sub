@@ -9,4 +9,3 @@ transformers==4.31.0
 tokenizers
 Pillow==9.0.0
 pip==24.3.1
-rustc==1.84.0
