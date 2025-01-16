@@ -13,7 +13,7 @@ from datetime import datetime
 @st.cache_resource
 def donut_model():
     with st.spinner("Loading Donut model and processor..."):
-        model_path = "C:/Users/User/Desktop/CORD/MODELCORDv2/ModelDonutCORDv2"
+        model_path = "Faz1306/donut-cord-SavedModelv2"
         processor = DonutProcessor.from_pretrained(model_path)
         model = VisionEncoderDecoderModel.from_pretrained(model_path)
     return processor, model
