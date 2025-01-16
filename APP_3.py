@@ -14,7 +14,7 @@ from datetime import datetime
 def donut_model():
     with st.spinner("Loading Donut model and processor..."):
         model_path = "Faz1306/donut-cord-SavedModelv2"
-        processor = DonutProcessor.from_pretrained(model_path)
+        processor = DonutProcessor.from_pretrained(model_path, trust_remote_code=True)
         model = VisionEncoderDecoderModel.from_pretrained(model_path)
     return processor, model
 
